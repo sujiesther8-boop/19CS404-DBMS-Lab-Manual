@@ -105,123 +105,194 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+Create a table named Tasks with the following columns:
+
+TaskID as INTEGER
+TaskName as TEXT
+DueDate as DATE
 
 ```sql
--- Paste your SQL code below for Question 1
+CREATE TABLE tasks(
+TaskID INTEGER,
+TaskName TEXT,
+DueDate DATE
+)
 ```
 
 **Output:**
+<img width="1182" height="362" alt="image" src="https://github.com/user-attachments/assets/a3738574-86da-4a1a-ad73-6ca18bed2b0e" />
 
-![Output1](output.png)
 
 **Question 2**
 ---
--- Paste Question 2 here
+Write a SQL Query to add an attribute designation in the employee table with the data type VARCHAR(50).
 
 ```sql
--- Paste your SQL code below for Question 2
+-ALTER TABLE employee
+ADD designation varchar(50)
+
 ```
 
 **Output:**
+<img width="1186" height="278" alt="image" src="https://github.com/user-attachments/assets/28d16e6a-b475-42ae-b7a2-b0683e51b771" />
 
-![Output2](output.png)
 
 **Question 3**
 ---
--- Paste Question 3 here
+--Create a table named Reviews with the following columns:
+
+ReviewID as INTEGER
+ProductID as INTEGER
+Rating as REAL
+ReviewText as TEXT
 
 ```sql
--- Paste your SQL code below for Question 3
+-- CREATE TABLE Reviews(
+ReviewID INTEGER,
+ProductID INTEGER,
+Rating REAL,
+ReviewText TEXT
+)
 ```
 
 **Output:**
+<img width="1163" height="373" alt="image" src="https://github.com/user-attachments/assets/d7a9203b-5c9a-4d33-b680-d0dd3628c9e6" />
 
-![Output3](output.png)
 
 **Question 4**
 ---
--- Paste Question 4 here
 
-```sql
--- Paste your SQL code below for Question 4
+Insert all customers from Old_customers into Customers
+
+Table attributes are CustomerID, Name, Address, Email
 ```
-
+INSERT INTO Customers(CustomerID, Name, Address, Email)
+SELECT CustomerID, Name, Address, Email
+FROM Old_customers;
+```
 **Output:**
 
-![Output4](output.png)
+![image](https://github.com/user-attachments/assets/5ad04860-aab6-4066-9138-47629ff8a49f)
 
 **Question 5**
 ---
--- Paste Question 5 here
+--Write an SQL query to add two new columns, department_id and manager_id, to the table employee with datatype of INTEGER. The manager_id column should have a default value of NULL.
 
 ```sql
--- Paste your SQL code below for Question 5
+-- ALTER TABLE employee ADD COLUMN department_id INTEGER;
+ALTER TABLE employee ADD COLUMN manager_id INTEGER DEFAULT NULL;
 ```
 
 **Output:**
-
-![Output5](output.png)
+![image](https://github.com/user-attachments/assets/aa64eeea-195a-4162-91ea-0dd7a32aa315)
 
 **Question 6**
 ---
--- Paste Question 6 here
 
-```sql
--- Paste your SQL code below for Question 6
+ ---Write a SQL query to Add a new column named "discount" with the data type DECIMAL(5,2) to the "customer" table.
+
+Sample table: customer
+
+customer_id | cust_name | city | grade | salesman_id -------------+----------------+------------+-------+------------- 3002 | Nick Rimando | New York | 100 | 5001 3007 | Brad Davis | New York | 200 | 5001 3005 | Graham Zusi | California | 200 | 5002
+```
+ALTER TABLE customer  ADD COLUMN discount DECIMAL(5,2);
 ```
 
 **Output:**
 
-![Output6](output.png)
+![image](https://github.com/user-attachments/assets/fc9f743c-666b-401b-84c5-983bd21a4926)
 
 **Question 7**
 ---
--- Paste Question 7 here
+--Insert a book with ISBN 978-1234567890, Title Data Science Essentials, Author Jane Doe, Publisher TechBooks, and Year 2024 into the Books table.
 
 ```sql
--- Paste your SQL code below for Question 7
-```
+INSERT INTO Books(ISBN,Title,Author,Publisher,Year)
+VALUES ( '978-1234567890','Data Science Essentials','Jane Doe','TechBooks',2024)
 
 **Output:**
+<img width="1180" height="222" alt="image" src="https://github.com/user-attachments/assets/4e696c7b-0059-4b33-b1bf-7ba8fb7251f3" />
 
-![Output7](output.png)
 
 **Question 8**
 ---
--- Paste Question 8 here
+--Create a new table named products with the following specifications:
+product_id as INTEGER and primary key.
+product_name as TEXT and not NULL.
+list_price as DECIMAL (10, 2) and not NULL.
+discount as DECIMAL (10, 2) with a default value of 0 and not NULL.
+A CHECK constraint at the table level to ensure:
+list_price is greater than or equal to discount
+discount is greater than or equal to 0
+list_price is greater than or equal to 0
 
 ```sql
--- Paste your SQL code below for Question 8
+--CREATE TABLE products(
+product_id INTEGER PRIMARY KEY,
+product_name TEXT NOT NULL,
+list_price DECIMAL (10,2) NOT NULL,
+discount DECIMAL (10,2) NOT NULL DEFAULT 0,
+CHECK(
+ list_price>=discount
+ AND discount>=0
+ AND list_price>=0
+)
+);
 ```
 
 **Output:**
+<img width="942" height="257" alt="image" src="https://github.com/user-attachments/assets/314dc181-b170-401c-9d1e-24a0b6dde0a2" />
 
-![Output8](output.png)
 
 **Question 9**
 ---
--- Paste Question 9 here
+--Insert the below data into the Student_details table, allowing the Subject and MARKS columns to take their default values.
+
+RollNo      Name          Gender      
+----------  ------------  ----------  
+204         Samuel Black  M          
+
+Note: The Subject and MARKS columns will use their default values.
 
 ```sql
--- Paste your SQL code below for Question 9
+--INSERT INTO Student_details(RollNo,Name,Gender)
+VALUES(204,'Samuel Black','M')
 ```
 
 **Output:**
+<img width="1185" height="288" alt="image" src="https://github.com/user-attachments/assets/89617ed0-74d4-4724-931c-dd4fce9d6569" />
 
-![Output9](output.png)
 
 **Question 10**
 ---
--- Paste Question 10 here
+--Create a new table named item with the following specifications and constraints:
+item_id as TEXT and as primary key.
+item_desc as TEXT.
+rate as INTEGER.
+icom_id as TEXT with a length of 4.
+icom_id is a foreign key referencing com_id in the company table.
+The foreign key should cascade updates and deletes.
+item_desc and rate should not accept NULL.
 
 ```sql
--- Paste your SQL code below for Question 10
+--CREATE TABLE item (
+item_id TEXT PRIMARY KEY,
+item_desc TEXT NOT NULL,
+rate INTEGER NOT NULL,
+icom_id TEXT(4),
+FOREIGN KEY(icom_id)
+       REFERENCES company(com_id)
+       ON UPDATE CASCADE
+       ON DELETE CASCADE
+
+);
 ```
 
 **Output:**
+<img width="1181" height="347" alt="image" src="https://github.com/user-attachments/assets/c7dd13ea-fe13-4a97-a7ed-68e2d7503efe" />
 
-![Output10](output.png)
+## GRADES
+<img width="1897" height="525" alt="image" src="https://github.com/user-attachments/assets/214f0ee7-b8cf-4117-805a-687361de64fa" />
 
 
 ## RESULT
