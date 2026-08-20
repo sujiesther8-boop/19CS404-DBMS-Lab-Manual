@@ -105,123 +105,200 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+-- Create a new table named item with the following specifications and constraints:
+item_id as TEXT and as primary key.
+item_desc as TEXT.
+rate as INTEGER.
+icom_id as TEXT with a length of 4.
+icom_id is a foreign key referencing com_id in the company table.
+The foreign key should cascade updates and deletes.
+item_desc and rate should not accept NULL.
 
 ```sql
--- Paste your SQL code below for Question 1
+-- CREATE TABLE item (
+item_id TEXT PRIMARY KEY,
+item_desc TEXT NOT NULL,
+rate INTEGER NOT NULL,
+icom_id TEXT(4),
+FOREIGN KEY(icom_id)
+       REFERENCES company(com_id)
+       ON UPDATE CASCADE
+       ON DELETE CASCADE
+
+);
 ```
 
 **Output:**
+<img width="803" height="306" alt="image" src="https://github.com/user-attachments/assets/770f295e-4387-4228-998f-a98e66f20820" />
 
-![Output1](output.png)
 
 **Question 2**
 ---
--- Paste Question 2 here
+--Write a SQL query to Add a new column State as text in the Student_details table.
 
+Sample table: Student_details
+
+ cid              name             type   notnull     dflt_value  pk
+---------------  ---------------  -----  ----------  ----------  ----------
+0                RollNo           int    0                       1
+1                Name             VARCH  1                       0
+2                Gender           TEXT   1                       0
+3                Subject          VARCH  0                       0
+4                MARKS            INT (  0                       0
 ```sql
--- Paste your SQL code below for Question 2
+--ALTER TABLE Student_details
+ADD COLUMN State TEXT;
 ```
 
 **Output:**
+<img width="1183" height="332" alt="image" src="https://github.com/user-attachments/assets/8048d09d-3d54-4dc2-a7b9-2a68511560bd" />
 
-![Output2](output.png)
 
 **Question 3**
 ---
--- Paste Question 3 here
+--Insert the following products into the Products table:
+
+Name        Category     Price       Stock
+----------  -----------  ----------  ----------
+Smartphone  Electronics  800         150
+Headphones  Accessories  200         300
 
 ```sql
--- Paste your SQL code below for Question 3
+--INSERT INTO Products(Name,Category,Price,Stock)
+VALUES
+('Smartphone','Electronics',800,150),
+('Headphones','Accessories',200,300);
 ```
 
 **Output:**
+<img width="931" height="337" alt="image" src="https://github.com/user-attachments/assets/8c32d5f3-b10d-4135-a1cc-6d320d7f3b1e" />
 
-![Output3](output.png)
 
 **Question 4**
----
--- Paste Question 4 here
-
-```sql
--- Paste your SQL code below for Question 4
+Create a new table named contacts with the following specifications: contact_id as INTEGER and primary key. first_name as TEXT and not NULL. last_name as TEXT and not NULL. email as TEXT. phone as TEXT and not NULL with a check constraint to ensure the length of phone is at least 10 characters.
 ```
-
+CREATE TABLE contacts (
+contact_id INT PRIMARY KEY,
+first_name TEXT  NOT NULL,
+last_name TEXT NOT NULL,
+email TEXT,
+phone TEXT  NOT NULL,
+CHECK (LENGTH(phone)>=10)
+);
+```
 **Output:**
 
-![Output4](output.png)
+![image](https://github.com/user-attachments/assets/4232e1e8-adc2-4bcc-aecc-6cb871978988)
 
 **Question 5**
----
--- Paste Question 5 here
+---Write a SQL Query to add an attribute designation in the employee table with the data type VARCHAR(50).
+--
 
 ```sql
--- Paste your SQL code below for Question 5
+-- ALTER TABLE employee
+ADD designation varchar(50)
+
 ```
 
 **Output:**
+<img width="880" height="251" alt="image" src="https://github.com/user-attachments/assets/9b607124-454e-46a4-b4ab-83f2ad029520" />
 
-![Output5](output.png)
 
 **Question 6**
 ---
--- Paste Question 6 here
+--Create a table named Reviews with the following columns:
+
+ReviewID as INTEGER
+ProductID as INTEGER
+Rating as REAL
+ReviewText as TEXT
 
 ```sql
--- Paste your SQL code below for Question 6
+--CREATE TABLE Reviews(
+ReviewID INTEGER,
+ProductID INTEGER,
+Rating REAL,
+ReviewText TEXT
+)
 ```
 
 **Output:**
+<img width="706" height="342" alt="image" src="https://github.com/user-attachments/assets/a7d7fc5c-7155-4a56-a850-ac871eab9cd2" />
 
-![Output6](output.png)
 
 **Question 7**
 ---
--- Paste Question 7 here
+--Insert a book with ISBN 978-1234567890, Title Data Science Essentials, Author Jane Doe, Publisher TechBooks, and Year 2024 into the Books table.
 
 ```sql
--- Paste your SQL code below for Question 7
+--INSERT INTO Books(ISBN,Title,Author,Publisher,Year)
+VALUES ( '978-1234567890','Data Science Essentials','Jane Doe','TechBooks',2024)
 ```
 
 **Output:**
+<img width="776" height="227" alt="image" src="https://github.com/user-attachments/assets/92d95661-c7d9-44e5-8ef4-f77cec0cac07" />
 
-![Output7](output.png)
 
 **Question 8**
 ---
--- Paste Question 8 here
+--Create a new table named products with the following specifications:
+product_id as INTEGER and primary key.
+product_name as TEXT and not NULL.
+list_price as DECIMAL (10, 2) and not NULL.
+discount as DECIMAL (10, 2) with a default value of 0 and not NULL.
+A CHECK constraint at the table level to ensure:
+list_price is greater than or equal to discount
+discount is greater than or equal to 0
+list_price is greater than or equal to 0
 
 ```sql
--- Paste your SQL code below for Question 8
+--CREATE TABLE products(
+product_id INTEGER PRIMARY KEY,
+product_name TEXT NOT NULL,
+list_price DECIMAL (10,2) NOT NULL,
+discount DECIMAL (10,2) NOT NULL DEFAULT 0,
+CHECK(
+ list_price>=discount
+ AND discount>=0
+ AND list_price>=0
+)
+);
 ```
 
 **Output:**
+<img width="947" height="245" alt="image" src="https://github.com/user-attachments/assets/867b523e-e2f1-4bb9-89b8-1453f2583181" />
 
-![Output8](output.png)
 
 **Question 9**
 ---
--- Paste Question 9 here
+-- Insert the below data into the Student_details table, allowing the Subject and MARKS columns to take their default values.
+
+RollNo      Name          Gender      
+----------  ------------  ----------  
+204         Samuel Black  M          
+
+Note: The Subject and MARKS columns will use their default values.
 
 ```sql
--- Paste your SQL code below for Question 9
+--INSERT INTO Student_details(RollNo,Name,Gender)
+VALUES(204,'Samuel Black','M')
 ```
 
 **Output:**
+<img width="1171" height="291" alt="image" src="https://github.com/user-attachments/assets/369cafe8-187f-4aac-a7c7-8e645b0e20e2" />
 
-![Output9](output.png)
 
 **Question 10**
 ---
--- Paste Question 10 here
-
-```sql
--- Paste your SQL code below for Question 10
+--
+Write a SQL query to modify the Student_details table by adding a new column Email of type VARCHAR(50) and updating the column MARKS to have a default value of 0.
 ```
-
+ALTER TABLE  Student_details ADD COLUMN Email VARCHAR(50);
+ALTER TABLE  Student_details ADD COLUMN MARKS DEFAULT '0';
+```
 **Output:**
 
-![Output10](output.png)
+![image](https://github.com/user-attachments/assets/a2ad517d-78c6-4489-9474-ae83f64e32ce)
 
 
 ## RESULT
